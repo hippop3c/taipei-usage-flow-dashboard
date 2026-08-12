@@ -3,10 +3,10 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "雙北使用熱力圖",
-  description: "依月份、日期、平假日與每小時查看雙北交易筆數、多日期平均及場站起訖關係。",
+  description: "依月份、日期、平假日與每小時查看雙北使用次數、多日期平均及場站起訖關係。",
   openGraph: {
     title: "雙北使用熱力圖",
-    description: "依月份、日期、平假日與每小時查看雙北交易筆數及場站起訖關係。",
+    description: "依月份、日期、平假日與每小時查看雙北使用次數及場站起訖關係。",
     images: [{ url: "/social-preview.png", width: 1659, height: 948 }],
   },
 };

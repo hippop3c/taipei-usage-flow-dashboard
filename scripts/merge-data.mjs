@@ -152,7 +152,7 @@ for (const hours of Object.values(valuesByDate)) {
 const monthDataset = {
   period,
   dates,
-  metrics: [{ key: "count", label: "交易筆數", unit: "筆" }],
+  metrics: [{ key: "count", label: "使用次數", unit: "次" }],
   valuesByDate,
   meta: {
     period,
@@ -162,8 +162,8 @@ const monthDataset = {
     missingPolicy: "omitted-station-date-hour-is-zero",
     aggregation: "arithmetic-mean-of-selected-dates",
     holidayDates,
-    sourceScope: `${period} 請款報表中，借車時間落在該月份的交易`,
-    completenessNote: "不包含該月借車但之後月份才入帳的交易。",
+    sourceScope: `${period} 請款報表中，借車時間落在該月份的使用紀錄`,
+    completenessNote: "不包含該月借車但之後月份才入帳的使用紀錄。",
   },
 };
 

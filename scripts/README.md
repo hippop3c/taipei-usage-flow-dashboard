@@ -13,4 +13,4 @@ Pipeline order:
 3. `run-od-etl.ps1` invokes the unchanged 32-bit `read-od-fast.ps1` worker and writes `work/months/YYYY-MM/od`.
 4. `build-flow-files.mjs` rebuilds only `public/months/YYYY-MM/flows` and keeps its audit under `work/audits`.
 
-The Access workers use borrow time, not payment time. Public usage rows remain `[stationIndex, 0, count]` with only the count metric. Non-weekend holidays are versioned in `holidays.json`.
+The Access workers use borrow time, not payment time. Public usage rows remain `[stationIndex, 0, count]`, where `count` stores the number of uses; no amount metric is included. Non-weekend holidays are versioned in `holidays.json`.

@@ -368,13 +368,13 @@ function popupMarkup(
   hour: number,
 ) {
   const [name, city, district, , , id] = record.station;
-  const value = `${NUMBER_FORMAT.format(record.value)} 筆`;
+  const value = `${NUMBER_FORMAT.format(record.value)} 次`;
   const dateText = effectiveDateCount > 0 ? `${effectiveDateCount} 日等權平均` : "目前沒有生效日期";
   return `
     <div class="station-popup">
       <strong>${escapeHtml(String(name))}</strong>
       <div class="station-popup__meta">${escapeHtml(String(city))} · ${escapeHtml(String(district))}${id ? ` · ${escapeHtml(String(id))}` : ""}</div>
-      <div class="station-popup__value"><span>交易筆數</span><b>${escapeHtml(value)}</b></div>
+      <div class="station-popup__value"><span>使用次數</span><b>${escapeHtml(value)}</b></div>
       <div class="station-popup__note">${hourLabel(hour)} · ${dateText} · 點擊查看起訖關係</div>
     </div>`;
 }
@@ -576,7 +576,7 @@ export default function Home() {
         }
       } catch {
         if (!cancelled) {
-          setLoadError("尚未找到交易資料檔，請確認資料檔已放入網站的 public 資料夾。");
+          setLoadError("尚未找到使用次數資料檔，請確認資料檔已放入網站的 public 資料夾。");
         }
         return;
       }
@@ -1355,7 +1355,7 @@ export default function Home() {
           ref={mapElementRef}
           id="subsidy-map"
           role="application"
-          aria-label="雙北交易筆數熱力地圖"
+          aria-label="雙北使用次數熱力地圖"
         />
 
         {!manifest && !loadError && (
@@ -1409,10 +1409,10 @@ export default function Home() {
                 <b>{hourLabel(hour)}</b>
               </div>
               <div className="summary-primary">
-                <span>本時段平均交易筆數</span>
+                <span>本時段平均使用次數</span>
                 <strong>
                   {NUMBER_FORMAT.format(summary.total)}
-                  <small>筆</small>
+                  <small>次</small>
                 </strong>
               </div>
               <div className="summary-grid">
@@ -1427,7 +1427,7 @@ export default function Home() {
                 <div>
                   <span>站均</span>
                   <b>
-                    {NUMBER_FORMAT.format(summary.stationAverage)} 筆
+                    {NUMBER_FORMAT.format(summary.stationAverage)} 次
                   </b>
                 </div>
                 <div>
@@ -1435,8 +1435,8 @@ export default function Home() {
                   <b title={topStationName}>{topStationName}</b>
                 </div>
               </div>
-              <p>使用次數以交易筆數呈現；多日期採等權平均，未出現的站日以 0 計入。點選地圖場站可查看起訖關係。</p>
-              <p className="summary-scope-note">資料範圍：{monthLabel(selectedMonth)}中，借車時間落在該月的交易；不含跨月後才納入來源報表的紀錄。</p>
+              <p>數值以使用次數呈現；多日期採等權平均，未出現的站日以 0 計入。點選地圖場站可查看起訖關係。</p>
+              <p className="summary-scope-note">資料範圍：{monthLabel(selectedMonth)}中，借車時間落在該月的使用紀錄；不含跨月後才納入來源報表的紀錄。</p>
             </aside>
 
             {selectedStation && (
@@ -1467,8 +1467,8 @@ export default function Home() {
                       checked={showOutgoing}
                       onChange={() => setShowOutgoing((current) => !current)}
                     />
-                    <span>流出</span>
-                    <b>{NUMBER_FORMAT.format(flowSummary.outgoingTotal)} 筆</b>
+                    <span>借出</span>
+                    <b>{NUMBER_FORMAT.format(flowSummary.outgoingTotal)} 次</b>
                   </label>
                   <label className="flow-toggle is-incoming">
                     <input
@@ -1476,8 +1476,8 @@ export default function Home() {
                       checked={showIncoming}
                       onChange={() => setShowIncoming((current) => !current)}
                     />
-                    <span>流入</span>
-                    <b>{NUMBER_FORMAT.format(flowSummary.incomingTotal)} 筆</b>
+                    <span>還入</span>
+                    <b>{NUMBER_FORMAT.format(flowSummary.incomingTotal)} 次</b>
                   </label>
                 </fieldset>
 
@@ -1495,9 +1495,9 @@ export default function Home() {
                   )}
 
                 <div className="flow-legend" aria-label="起訖線條圖例">
-                  <span><i className="flow-line is-outgoing" />藍色實線：流出</span>
-                  <span><i className="flow-line is-incoming" />橘色虛線：流入</span>
-                  <small>關係線依目前城市與行政區範圍，每方向顯示前 60 條；越深、越粗代表平均交易筆數越多。</small>
+                  <span><i className="flow-line is-outgoing" />藍色實線：借出</span>
+                  <span><i className="flow-line is-incoming" />橘色虛線：還入</span>
+                  <small>關係線依目前城市與行政區範圍，每方向顯示前 60 條；越深、越粗代表平均使用次數越多。</small>
                 </div>
               </aside>
             )}
@@ -1505,13 +1505,13 @@ export default function Home() {
             <aside className="map-legend" aria-label="熱力圖圖例">
               <div className="legend-head">
                 <span>熱度</span>
-                <b>交易筆數</b>
+                <b>使用次數</b>
               </div>
               <div className="legend-gradient" aria-hidden="true" />
               <div className="legend-scale">
                 <span>0</span>
                 <span>
-                  高於 {NUMBER_FORMAT.format(summary.scaleMax)} 筆
+                  高於 {NUMBER_FORMAT.format(summary.scaleMax)} 次
                 </span>
               </div>
               <p>色階上限採目前篩選站點的第 95 百分位。</p>
