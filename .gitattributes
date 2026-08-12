@@ -1,0 +1,5 @@
+* text=auto
+
+# Generated monthly datasets are versioned, but textual diffs are not useful.
+public/subsidy-data.js -diff
+public/months/**/*.json -diff
