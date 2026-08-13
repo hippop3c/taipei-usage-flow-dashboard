@@ -1,5 +1,7 @@
 # 雙北使用熱力圖
 
+[開啟 GitHub Pages 互動網頁](https://hippop3c.github.io/taipei-usage-flow-dashboard/)
+
 將 `E:\` 內台北市、新北市的每月 Access 請款報表，依「借車時間」聚合成每日、每小時、每站的使用次數與逐站借出／還入資料。資料按月拆檔，新增月份不會重建或放大其他月份的公開資料。
 
 ## 一鍵更新月份

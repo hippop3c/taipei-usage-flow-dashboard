@@ -1,13 +1,21 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: "雙北使用熱力圖",
   description: "依月份、日期、平假日與每小時查看雙北使用次數、多日期平均及場站起訖關係。",
   openGraph: {
     title: "雙北使用熱力圖",
     description: "依月份、日期、平假日與每小時查看雙北使用次數及場站起訖關係。",
-    images: [{ url: "/social-preview.png", width: 1659, height: 948 }],
+    images: [
+      {
+        url: "https://hippop3c.github.io/taipei-usage-flow-dashboard/social-preview.png",
+        width: 1659,
+        height: 948,
+      },
+    ],
   },
 };
 

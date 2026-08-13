@@ -197,8 +197,8 @@ const months = manifestPeriods.map((manifestPeriod) => {
   return {
     period: manifestPeriod,
     dates: descriptorDates,
-    usageUrl: `/months/${manifestPeriod}/usage.json`,
-    flowBaseUrl: `/months/${manifestPeriod}/flows`,
+    usageUrl: `months/${manifestPeriod}/usage.json`,
+    flowBaseUrl: `months/${manifestPeriod}/flows`,
     holidayDates: descriptorHolidays,
   };
 });

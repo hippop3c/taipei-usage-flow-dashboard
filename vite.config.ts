@@ -10,6 +10,7 @@ const { d1, r2 } = hostingConfig;
 
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
+const isGitHubPagesBuild = process.env.GITHUB_PAGES_BUILD === "true";
 
 const localBindingConfig = {
   main: "./worker/index.ts",
@@ -34,6 +35,12 @@ const localBindingConfig = {
 };
 
 export default defineConfig(async () => {
+  if (isGitHubPagesBuild) {
+    return {
+      plugins: [vinext()],
+    };
+  }
+
   // Keep Wrangler and Miniflare state project-local. These are non-secret tool
   // settings; application environment belongs in ignored `.env*` files.
   process.env.WRANGLER_WRITE_LOGS ??= "false";
